@@ -1,4 +1,4 @@
-<img width="3167" height="3840" alt="Untitled diagram _ Mermaid Chart-2025-09-27-024334" src="https://github.com/user-attachments/assets/7ac57b45-fbb9-497d-aacc-3f076ec58562" /># Web Application ML-based WAF (Web Application Firewall)
+# Web Application ML-based WAF (Web Application Firewall)
 
  **A lightweight, ML-powered Web Application Firewall using pattern-based anomaly detection with OpenResty integration**
 
