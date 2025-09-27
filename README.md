@@ -66,7 +66,7 @@ This project implements a production-ready Web Application Firewall that uses ma
 ```
 ##UML Sequence Diagram
 
-![banner](SIH/Untitled diagram _ Mermaid Chart-2025-09-27-024334.png)
+![banner](./SIH/Untitled diagram _ Mermaid Chart-2025-09-27-024334.png)
 
 ## Quick Start
 
