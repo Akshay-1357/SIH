@@ -1,10 +1,10 @@
 # Web Application ML-based WAF (Web Application Firewall)
 
-🛡️ **A lightweight, ML-powered Web Application Firewall using pattern-based anomaly detection with OpenResty integration**
+ **A lightweight, ML-powered Web Application Firewall using pattern-based anomaly detection with OpenResty integration**
 
 
 
-## 🎯 Overview
+##  Overview
 
 This project implements a production-ready Web Application Firewall that uses machine learning to detect anomalous HTTP requests in real-time. The system is designed to:
 
@@ -15,37 +15,37 @@ This project implements a production-ready Web Application Firewall that uses ma
 - **Integrate seamlessly** with existing web infrastructure via OpenResty/Nginx
 
 ### Key Statistics
-- 🚀 **<1ms latency overhead** (async processing)
-- 🎯 **91%+ accuracy** on common web attacks
-- 📊 **142:1 compression ratio** (2000 logs → 14 patterns)
-- 🔄 **Real-time incremental learning**
-- 🐳 **Full Docker support**
+-  **<1ms latency overhead** (async processing)
+-  **91%+ accuracy** on common web attacks
+-  **142:1 compression ratio** (2000 logs → 14 patterns)
+-  **Real-time incremental learning**
+-  **Full Docker support**
 
-## ✨ Features
+##  Features
 
 ### Core ML Engine
-- ✅ **BPE Tokenizer** trained on normalized HTTP sequences
-- ✅ **Pattern-based Anomaly Detection** (faster than transformer models)
-- ✅ **Token Frequency Analysis** for unknown pattern detection
-- ✅ **Heuristic Rules** for common attack patterns
-- ✅ **Incremental Learning** support
+- **BPE Tokenizer** trained on normalized HTTP sequences
+- **Pattern-based Anomaly Detection** (faster than transformer models)
+- **Token Frequency Analysis** for unknown pattern detection
+- **Heuristic Rules** for common attack patterns
+- **Incremental Learning** support
 
 ### Production Integration
-- ✅ **OpenResty/Nginx Integration** with Lua scripting
-- ✅ **Async FastAPI Sidecar** for ML inference
-- ✅ **Non-blocking Request Processing**
-- ✅ **Real-time Detection Logging**
-- ✅ **Health Checks & Monitoring**
+- **OpenResty/Nginx Integration** with Lua scripting
+- **Async FastAPI Sidecar** for ML inference
+- **Non-blocking Request Processing**
+- **Real-time Detection Logging**
+- **Health Checks & Monitoring**
 
 ### Attack Detection
-- 🔍 **SQL Injection** detection (`UNION`, `SELECT`, `DROP`)
-- 🔍 **Cross-Site Scripting (XSS)** detection 
-- 🔍 **Directory Traversal** detection (`/../`, `etc/passwd`)
-- 🔍 **Admin Access Attempts** detection
-- 🔍 **Command Injection** detection
-- 🔍 **Buffer Overflow** detection (length-based)
+- **SQL Injection** detection (`UNION`, `SELECT`, `DROP`)
+- **Cross-Site Scripting (XSS)** detection 
+- **Directory Traversal** detection (`/../`, `etc/passwd`)
+- **Admin Access Attempts** detection
+- **Command Injection** detection
+- **Buffer Overflow** detection (length-based)
 
-## 🏗️ Architecture
+##  Architecture
 
 ```
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
@@ -65,7 +65,7 @@ This project implements a production-ready Web Application Firewall that uses ma
                        └──────────────────┘
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Docker & Docker Compose
@@ -89,7 +89,7 @@ curl "http://localhost/search?q=<script>alert(1)</script>"  # XSS attack
 tail -f logs/waf_detections.log
 ```
 
-## 📦 Installation
+## Installation
 
 ### Option 1: Docker Compose (Recommended)
 ```bash
@@ -162,7 +162,7 @@ sudo chown www-data:www-data /var/log/waf
 sudo openresty -s reload
 ```
 
-## 🎮 Usage
+## Usage
 
 ### Basic Operations
 
@@ -227,7 +227,7 @@ systemctl restart waf-sidecar
 }
 ```
 
-## 🎪 Demo
+## Demo
 
 ### Interactive Demo
 ```bash
@@ -248,12 +248,12 @@ bash demo/demo_attacks.sh
 6. **Buffer Overflow**: Very long request URLs
 
 ### Expected Results
-- ✅ **Normal requests**: Score 0.0-0.3 (pass through)
-- 🚨 **Attack requests**: Score 0.5+ (logged as anomalous)
-- 📊 **False positive rate**: <2% on benign traffic
-- ⚡ **Response time**: <1ms overhead
+- **Normal requests**: Score 0.0-0.3 (pass through)
+- **Attack requests**: Score 0.5+ (logged as anomalous)
+- **False positive rate**: <2% on benign traffic
+- **Response time**: <1ms overhead
 
-## ⚙️ Configuration
+## Configuration
 
 ### Environment Variables
 ```bash
@@ -350,7 +350,7 @@ ab -n 10000 -c 100 http://localhost/
 # Compare results - should be nearly identical
 ```
 
-## 🧪 Testing
+## Testing
 
 ### Unit Tests
 ```bash
@@ -406,7 +406,7 @@ webapp-ml-waf/
 2. Retrain tokenizer: `python scripts/retrain_tokenizer.py`
 3. Update model: `python src/incremental_tune.py`
 
-## 🐳 Docker
+## Docker
 
 ### Build Images
 ```bash
@@ -429,7 +429,7 @@ docker-compose up -d --scale ml-sidecar=3
 docker-compose logs -f ml-sidecar
 ```
 
-## 📈 Monitoring
+## Monitoring
 
 ### Metrics Available
 - Request throughput
@@ -479,7 +479,7 @@ WAF_LOG_LEVEL=DEBUG uvicorn src.server:app
 python src/debug_detector.py --sequence "GET /test"
 ```
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -501,17 +501,17 @@ flake8 src/ tests/
 mypy src/
 ```
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - HuggingFace Transformers for tokenizer implementation
 - OpenResty community for Lua-based web framework
 - FastAPI for high-performance async API framework
 
-## 📞 Support
+## Support
 
 - 📚 Documentation: [Wiki](wiki)
 - 🐛 Bug Reports: [Issues](issues)
