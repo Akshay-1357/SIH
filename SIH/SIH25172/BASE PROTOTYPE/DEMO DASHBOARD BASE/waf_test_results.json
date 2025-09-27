@@ -1,0 +1,19 @@
+[
+  {
+    "log_id": 1,
+    "request": "GET /index.html",
+    "prediction": {
+      "anomaly_score": 1.0,
+      "is_anomaly": true,
+      "confidence": 0.5635358869931777,
+      "risk_level": "CRITICAL",
+      "raw_score": -0.5635358869931777,
+      "features_used": 28
+    }
+  },
+  {
+    "log_id": 2,
+    "request": "POST /login.php",
+    "prediction": {
+      "anomaly_score": 1.0,
+      "is_anomaly": 

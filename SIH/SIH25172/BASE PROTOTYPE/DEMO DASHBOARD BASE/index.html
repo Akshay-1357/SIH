@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAF Transformer-Based Security Monitor</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">
+        <span class="theme-icon">🌙</span>
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">🛡️</div>
+                <span class="logo-text">WAF Monitor</span>
+            </div>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#" data-view="dashboard" class="menu-link active">
+                <span class="menu-icon">📊</span>
+                <span class="menu-text">Dashboard</span>
+            </a></li>
+            <li><a href="#" data-view="analysis" class="menu-link">
+                <span class="menu-icon">🔍</span>
+                <span class="menu-text">Request Analysis</span>
+            </a></li>
+            <li><a href="#" data-view="intelligence" class="menu-link">
+                <span class="menu-icon">🎯</span>
+                <span class="menu-text">Threat Intelligence</span>
+            </a></li>
+            <li><a href="#" data-view="settings" class="menu-link">
+                <span class="menu-icon">⚙️</span>
+                <span class="menu-text">Settings</span>
+            </a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard View -->
+        <div id="dashboard-view" class="view active">
+            <header class="page-header">
+                <h1>WAF Transformer-Based Security Monitor</h1>
+                <div class="header-status">
+                    <span class="status status--success">System Online</span>
+                    <span class="last-update">Last updated: <span id="last-update-time">--:--</span></span>
+                </div>
+            </header>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="total-requests">0</div>
+                        <div class="stat-label">Total Requests</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🚨</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="threats-detected">0</div>
+                        <div class="stat-label">Threats Detected</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="detection-rate">0%</div>
+                        <div class="stat-label">Detection Rate</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="avg-response-time">0ms</div>
+                        <div class="stat-label">Avg Response Time</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>Risk Level Distribution</h3>
+                        </div>
+                        <div class="card__body">
+                            <div style="position: relative; height: 300px;">
+                                <canvas id="risk-distribution-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>Performance Over Time</h3>
+                        </div>
+                        <div class="card__body">
+                            <div style="position: relative; height: 300px;">
+                                <canvas id="performance-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Threat Feed -->
+            <div class="threat-feed">
+                <div class="card">
+                    <div class="card__header">
+                        <h3>Live Threat Feed</h3>
+                        <button id="export-threats" class="btn btn--sm btn--outline">Export Report</button>
+                    </div>
+                    <div class="card__body">
+                        <div id="threat-feed-list" class="threat-list">
+                            <!-- Threats will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Request Analysis View -->
+        <div id="analysis-view" class="view">
+            <header class="page-header">
+                <h1>Request Analysis</h1>
+                <div class="analysis-controls">
+                    <input type="text" id="search-input" class="form-control" placeholder="Search requests...">
+                    <select id="risk-filter" class="form-control">
+                        <option value="">All Risk Levels</option>
+                        <option value="CRITICAL">Critical</option>
+                        <option value="HIGH">High</option>
+                        <option value="MEDIUM">Medium</option>
+                        <option value="LOW">Low</option>
+                        <option value="NORMAL">Normal</option>
+                    </select>
+                </div>
+            </header>
+
+            <div class="requests-table-container">
+                <div class="card">
+                    <div class="card__body">
+                        <div class="table-wrapper">
+                            <table class="requests-table">
+                                <thead>
+                                    <tr>
+                                        <th>Timestamp</th>
+                                        <th>Client IP</th>
+                                        <th>Method & URL</th>
+                                        <th>Risk Score</th>
+                                        <th>Risk Level</th>
+                                        <th>Threats</th>
+                                        <th>Action</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="requests-table-body">
+                                    <!-- Requests will be populated here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Threat Intelligence View -->
+        <div id="intelligence-view" class="view">
+            <header class="page-header">
+                <h1>Threat Intelligence</h1>
+            </header>
+
+            <div class="intelligence-grid">
+                <div class="threat-breakdown">
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>Attack Type Breakdown</h3>
+                        </div>
+                        <div class="card__body">
+                            <div style="position: relative; height: 300px;">
+                                <canvas id="threat-breakdown-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="top-attackers">
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>Top Attackers</h3>
+                        </div>
+                        <div class="card__body">
+                            <div id="attackers-list" class="attackers-list">
+                                <!-- Top attackers will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="model-performance">
+                <div class="card">
+                    <div class="card__header">
+                        <h3>AI Model Performance</h3>
+                    </div>
+                    <div class="card__body">
+                        <div class="model-stats">
+                            <div class="model-stat">
+                                <span class="model-label">Model Version</span>
+                                <span class="model-value" id="model-version">-</span>
+                            </div>
+                            <div class="model-stat">
+                                <span class="model-label">Accuracy</span>
+                                <span class="model-value" id="model-accuracy">-</span>
+                            </div>
+                            <div class="model-stat">
+                                <span class="model-label">Precision</span>
+                                <span class="model-value" id="model-precision">-</span>
+                            </div>
+                            <div class="model-stat">
+                                <span class="model-label">Recall</span>
+                                <span class="model-value" id="model-recall">-</span>
+                            </div>
+                            <div class="model-stat">
+                                <span class="model-label">F1 Score</span>
+                                <span class="model-value" id="model-f1">-</span>
+                            </div>
+                            <div class="model-stat">
+                                <span class="model-label">Training Samples</span>
+                                <span class="model-value" id="model-samples">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings View -->
+        <div id="settings-view" class="view">
+            <header class="page-header">
+                <h1>WAF Settings</h1>
+            </header>
+
+            <div class="settings-grid">
+                <div class="settings-section">
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>Detection Thresholds</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="form-group">
+                                <label class="form-label">Critical Risk Threshold</label>
+                                <input type="range" id="critical-threshold" class="form-control" min="0.8" max="1.0" step="0.01" value="0.9">
+                                <span class="threshold-value">0.90</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">High Risk Threshold</label>
+                                <input type="range" id="high-threshold" class="form-control" min="0.6" max="0.9" step="0.01" value="0.75">
+                                <span class="threshold-value">0.75</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Medium Risk Threshold</label>
+                                <input type="range" id="medium-threshold" class="form-control" min="0.3" max="0.7" step="0.01" value="0.5">
+                                <span class="threshold-value">0.50</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>System Configuration</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="form-group">
+                                <label class="form-label">Auto-Block Critical Threats</label>
+                                <input type="checkbox" id="auto-block" checked>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Real-time Updates</label>
+                                <input type="checkbox" id="realtime-updates" checked>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Log Retention (days)</label>
+                                <input type="number" id="log-retention" class="form-control" value="30">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Request Detail Modal -->
+    <div id="request-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Request Details</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Request details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Notification -->
+    <div id="alert-notification" class="alert-notification hidden">
+        <div class="alert-content">
+            <span class="alert-icon">🚨</span>
+            <span class="alert-message"></span>
+            <button class="alert-close">&times;</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

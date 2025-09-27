@@ -1,0 +1,28 @@
+{
+  "anomaly_threshold": 0.5,
+  "model_path": "model/final/detector.json",
+  "tokenizer_path": "model/tokenizer.json",
+  "log_path": "logs/waf_detections.log",
+  "api": {
+    "host": "0.0.0.0",
+    "port": 8080,
+    "workers": 1,
+    "timeout": 30
+  },
+  "detection": {
+    "enable_token_analysis": true,
+    "enable_rule_analysis": true,
+    "token_weight": 0.6,
+    "rule_weight": 0.4,
+    "max_sequence_length": 200
+  },
+  "caching": {
+    "enable": true,
+    "ttl_seconds": 60,
+    "max_size": 1000
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  }
+}

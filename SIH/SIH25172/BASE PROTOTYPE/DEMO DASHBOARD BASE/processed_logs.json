@@ -1,0 +1,174 @@
+[
+  {
+    "raw": "192.168.1.100 - - [26/Sep/2025:18:55:36 +0000] \"GET /index.html HTTP/1.1\" 200 2326 \"http://www.google.com\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\"",
+    "parsed": {
+      "client_ip": "192.168.1.100",
+      "remote_logname": "-",
+      "remote_user": "-",
+      "timestamp": "26/Sep/2025:18:55:36 +0000",
+      "request": "GET /index.html HTTP/1.1",
+      "status_code": 200,
+      "response_size": "2326",
+      "referer": "http://www.google.com",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+      "method": "GET",
+      "url": "/index.html",
+      "protocol": "HTTP/1.1"
+    },
+    "normalized": {
+      "method": "GET",
+      "path": "/index.html",
+      "status_code": 200,
+      "response_size": 2326,
+      "user_agent_features": {
+        "is_bot": false,
+        "browser_type": "other",
+        "os_type": "windows",
+        "ua_length": 60
+      },
+      "request_features": {
+        "has_sql_injection": false,
+        "has_xss_attempt": false,
+        "has_path_traversal": false,
+        "request_length": 24,
+        "has_encoded_chars": false,
+        "suspicious_patterns": 0
+      },
+      "time_features": {
+        "hour": 18,
+        "day_of_week": 4,
+        "is_weekend": false,
+        "is_night": false
+      }
+    }
+  },
+  {
+    "raw": "10.0.0.1 - - [26/Sep/2025:18:56:15 +0000] \"POST /login.php HTTP/1.1\" 200 1547 \"-\" \"curl/7.64.1\"",
+    "parsed": {
+      "client_ip": "10.0.0.1",
+      "remote_logname": "-",
+      "remote_user": "-",
+      "timestamp": "26/Sep/2025:18:56:15 +0000",
+      "request": "POST /login.php HTTP/1.1",
+      "status_code": 200,
+      "response_size": "1547",
+      "referer": "-",
+      "user_agent": "curl/7.64.1",
+      "method": "POST",
+      "url": "/login.php",
+      "protocol": "HTTP/1.1"
+    },
+    "normalized": {
+      "method": "POST",
+      "path": "/login.php",
+      "status_code": 200,
+      "response_size": 1547,
+      "user_agent_features": {
+        "is_bot": false,
+        "browser_type": "other",
+        "os_type": "other",
+        "ua_length": 11
+      },
+      "request_features": {
+        "has_sql_injection": false,
+        "has_xss_attempt": false,
+        "has_path_traversal": false,
+        "request_length": 24,
+        "has_encoded_chars": false,
+        "suspicious_patterns": 0
+      },
+      "time_features": {
+        "hour": 18,
+        "day_of_week": 4,
+        "is_weekend": false,
+        "is_night": false
+      }
+    }
+  },
+  {
+    "raw": "192.168.1.100 - - [26/Sep/2025:18:56:45 +0000] \"GET /admin/config.php?id=1' OR 1=1-- HTTP/1.1\" 403 0 \"-\" \"sqlmap/1.4.7\"",
+    "parsed": {
+      "client_ip": "192.168.1.100",
+      "remote_logname": "-",
+      "remote_user": "-",
+      "timestamp": "26/Sep/2025:18:56:45 +0000",
+      "request": "GET /admin/config.php?id=1' OR 1=1-- HTTP/1.1",
+      "status_code": 403,
+      "response_size": "0",
+      "referer": "-",
+      "user_agent": "sqlmap/1.4.7",
+      "method": "GET",
+      "url": "/admin/config.php?id=1'",
+      "protocol": "OR"
+    },
+    "normalized": {
+      "method": "GET",
+      "path": "/admin/config.php",
+      "status_code": 403,
+      "response_size": 0,
+      "user_agent_features": {
+        "is_bot": false,
+        "browser_type": "other",
+        "os_type": "other",
+        "ua_length": 12
+      },
+      "request_features": {
+        "has_sql_injection": true,
+        "has_xss_attempt": false,
+        "has_path_traversal": false,
+        "request_length": 45,
+        "has_encoded_chars": false,
+        "suspicious_patterns": 1
+      },
+      "time_features": {
+        "hour": 18,
+        "day_of_week": 4,
+        "is_weekend": false,
+        "is_night": false
+      }
+    }
+  },
+  {
+    "raw": "10.0.0.1 - - [26/Sep/2025:18:57:12 +0000] \"GET /search?q=<script>alert('XSS')</script> HTTP/1.1\" 200 3421 \"http://evil.com\" \"Mozilla/5.0 (compatible; bot)\"",
+    "parsed": {
+      "client_ip": "10.0.0.1",
+      "remote_logname": "-",
+      "remote_user": "-",
+      "timestamp": "26/Sep/2025:18:57:12 +0000",
+      "request": "GET /search?q=<script>alert('XSS')</script> HTTP/1.1",
+      "status_code": 200,
+      "response_size": "3421",
+      "referer": "http://evil.com",
+      "user_agent": "Mozilla/5.0 (compatible; bot)",
+      "method": "GET",
+      "url": "/search?q=<script>alert('XSS')</script>",
+      "protocol": "HTTP/1.1"
+    },
+    "normalized": {
+      "method": "GET",
+      "path": "/search",
+      "status_code": 200,
+      "response_size": 3421,
+      "user_agent_features": {
+        "is_bot": true,
+        "browser_type": "other",
+        "os_type": "other",
+        "ua_length": 29
+      },
+      "request_features": {
+        "has_sql_injection": false,
+        "has_xss_attempt": true,
+        "has_path_traversal": false,
+        "request_length": 52,
+        "has_encoded_chars": false,
+        "suspicious_patterns": 8
+      },
+      "time_features": {
+        "hour": 18,
+        "day_of_week": 4,
+        "is_weekend": false,
+        "is_night": false
+      }
+    }
+  }
+]

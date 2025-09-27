@@ -1,0 +1,7 @@
+id,timestamp,client_ip,method,url,status_code,user_agent,risk_score,risk_level,is_threat,threats_detected,processing_time_ms
+6c41299b,2025-09-26T13:33:13.846848,192.168.1.100,GET,/index.html,200,Mozilla/5.0 (Windows NT 10.0),0.08000000000000002,NORMAL,False,,0.22
+b1a064cf,2025-09-26T13:33:13.846982,10.0.0.1,POST,/api/login,200,curl/7.64.1,0.06,NORMAL,False,,0.11
+eb2d5518,2025-09-26T13:33:13.847093,192.168.1.50,GET,/admin/users.php?id=1,403,sqlmap/1.4.7,0.7100000000000001,CRITICAL,True,sql_injection,0.1
+bc53f00f,2025-09-26T13:33:13.847241,10.0.0.2,GET,/search?q=<script>alert(1)</script>,200,Mozilla/5.0 (bot),0.59,HIGH,True,xss,0.13
+d7f397cd,2025-09-26T13:33:13.847341,192.168.1.100,GET,/contact.html,200,Mozilla/5.0 (Macintosh),0.08000000000000002,NORMAL,False,,0.09
+d70faad1,2025-09-26T13:33:13.847442,10.0.0.3,GET,/files.php?path=../../../etc/passwd,500,python-requests/2.25.1,0.41000000000000003,MEDIUM,False,path_traversal,0.09

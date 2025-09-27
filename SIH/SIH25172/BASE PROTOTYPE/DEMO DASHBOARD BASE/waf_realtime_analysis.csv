@@ -1,0 +1,1 @@
+id,timestamp,client_ip,method,url,status_code,risk_score,risk_level,is_threat,threats_detected,processing_time_ms

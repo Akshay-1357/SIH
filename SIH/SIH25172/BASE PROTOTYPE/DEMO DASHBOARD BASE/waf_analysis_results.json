@@ -1,0 +1,82 @@
+[
+  {
+    "log_id": 1,
+    "timestamp": "2025-09-26T13:30:08.822329",
+    "request_method": "GET",
+    "request_url": "/index.html",
+    "client_ip": "192.168.1.100",
+    "status_code": 200,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb...",
+    "analysis": {
+      "risk_score": 0.1,
+      "risk_level": "LOW",
+      "is_anomaly": false,
+      "threats_detected": [],
+      "confidence": 0.9,
+      "suspicious_char_count": 10,
+      "status_code": 200
+    },
+    "raw_request": "192.168.1.100 - - [26/Sep/2025:18:55:36 +0000] \"GET /index.html HTTP/1.1\" 200 2326 \"http://www.google.com\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\""
+  },
+  {
+    "log_id": 2,
+    "timestamp": "2025-09-26T13:30:08.822486",
+    "request_method": "POST",
+    "request_url": "/login.php",
+    "client_ip": "10.0.0.1",
+    "status_code": 200,
+    "user_agent": "curl/7.64.1",
+    "analysis": {
+      "risk_score": 0.06,
+      "risk_level": "NORMAL",
+      "is_anomaly": false,
+      "threats_detected": [],
+      "confidence": 0.94,
+      "suspicious_char_count": 6,
+      "status_code": 200
+    },
+    "raw_request": "10.0.0.1 - - [26/Sep/2025:18:56:15 +0000] \"POST /login.php HTTP/1.1\" 200 1547 \"-\" \"curl/7.64.1\""
+  },
+  {
+    "log_id": 3,
+    "timestamp": "2025-09-26T13:30:08.822617",
+    "request_method": "GET",
+    "request_url": "/admin/config.php?id=1'",
+    "client_ip": "192.168.1.100",
+    "status_code": 403,
+    "user_agent": "sqlmap/1.4.7",
+    "analysis": {
+      "risk_score": 0.7200000000000001,
+      "risk_level": "CRITICAL",
+      "is_anomaly": true,
+      "threats_detected": [
+        "sql_injection"
+      ],
+      "confidence": 0.7200000000000001,
+      "suspicious_char_count": 7,
+      "status_code": 403
+    },
+    "raw_request": "192.168.1.100 - - [26/Sep/2025:18:56:45 +0000] \"GET /admin/config.php?id=1' OR 1=1-- HTTP/1.1\" 403 0 \"-\" \"sqlmap/1.4.7\""
+  },
+  {
+    "log_id": 4,
+    "timestamp": "2025-09-26T13:30:08.822726",
+    "request_method": "GET",
+    "request_url": "/search?q=<script>alert('XSS')</script>",
+    "client_ip": "10.0.0.1",
+    "status_code": 200,
+    "user_agent": "Mozilla/5.0 (compatible; bot)",
+    "analysis": {
+      "risk_score": 0.62,
+      "risk_level": "HIGH",
+      "is_anomaly": true,
+      "threats_detected": [
+        "xss"
+      ],
+      "confidence": 0.62,
+      "suspicious_char_count": 17,
+      "status_code": 200
+    },
+    "raw_request": "10.0.0.1 - - [26/Sep/2025:18:57:12 +0000] \"GET /search?q=<script>alert('XSS')</script> HTTP/1.1\" 200 3421 \"http://evil.com\" \"Mozilla/5.0 (compatible; bot)\""
+  }
+]

@@ -1,0 +1,128 @@
+{
+  "waf_analysis_report": {
+    "timestamp": "2025-09-26T13:33:13.849309",
+    "version": "WAF-Transformer-v1.0-Demo",
+    "performance_metrics": {
+      "uptime_seconds": 0,
+      "requests_processed": 6,
+      "threats_detected": 2,
+      "detection_rate_percent": 33.33,
+      "average_processing_time_ms": 0.12,
+      "requests_per_second": 6.0
+    },
+    "request_details": [
+      {
+        "id": "6c41299b",
+        "timestamp": "2025-09-26T13:33:13.846848",
+        "client_ip": "192.168.1.100",
+        "method": "GET",
+        "url": "/index.html",
+        "status_code": 200,
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0)",
+        "risk_score": 0.08000000000000002,
+        "risk_level": "NORMAL",
+        "is_threat": false,
+        "threats_detected": [],
+        "processing_time_ms": 0.22
+      },
+      {
+        "id": "b1a064cf",
+        "timestamp": "2025-09-26T13:33:13.846982",
+        "client_ip": "10.0.0.1",
+        "method": "POST",
+        "url": "/api/login",
+        "status_code": 200,
+        "user_agent": "curl/7.64.1",
+        "risk_score": 0.06,
+        "risk_level": "NORMAL",
+        "is_threat": false,
+        "threats_detected": [],
+        "processing_time_ms": 0.11
+      },
+      {
+        "id": "eb2d5518",
+        "timestamp": "2025-09-26T13:33:13.847093",
+        "client_ip": "192.168.1.50",
+        "method": "GET",
+        "url": "/admin/users.php?id=1",
+        "status_code": 403,
+        "user_agent": "sqlmap/1.4.7",
+        "risk_score": 0.7100000000000001,
+        "risk_level": "CRITICAL",
+        "is_threat": true,
+        "threats_detected": [
+          "sql_injection"
+        ],
+        "processing_time_ms": 0.1
+      },
+      {
+        "id": "bc53f00f",
+        "timestamp": "2025-09-26T13:33:13.847241",
+        "client_ip": "10.0.0.2",
+        "method": "GET",
+        "url": "/search?q=<script>alert(1)</script>",
+        "status_code": 200,
+        "user_agent": "Mozilla/5.0 (bot)",
+        "risk_score": 0.59,
+        "risk_level": "HIGH",
+        "is_threat": true,
+        "threats_detected": [
+          "xss"
+        ],
+        "processing_time_ms": 0.13
+      },
+      {
+        "id": "d7f397cd",
+        "timestamp": "2025-09-26T13:33:13.847341",
+        "client_ip": "192.168.1.100",
+        "method": "GET",
+        "url": "/contact.html",
+        "status_code": 200,
+        "user_agent": "Mozilla/5.0 (Macintosh)",
+        "risk_score": 0.08000000000000002,
+        "risk_level": "NORMAL",
+        "is_threat": false,
+        "threats_detected": [],
+        "processing_time_ms": 0.09
+      },
+      {
+        "id": "d70faad1",
+        "timestamp": "2025-09-26T13:33:13.847442",
+        "client_ip": "10.0.0.3",
+        "method": "GET",
+        "url": "/files.php?path=../../../etc/passwd",
+        "status_code": 500,
+        "user_agent": "python-requests/2.25.1",
+        "risk_score": 0.41000000000000003,
+        "risk_level": "MEDIUM",
+        "is_threat": false,
+        "threats_detected": [
+          "path_traversal"
+        ],
+        "processing_time_ms": 0.09
+      }
+    ],
+    "threat_analysis": {
+      "total_threats": 2,
+      "threat_types": {
+        "sql_injection": 1,
+        "xss": 1,
+        "path_traversal": 1
+      },
+      "risk_distribution": {
+        "CRITICAL": 1,
+        "HIGH": 1,
+        "MEDIUM": 1,
+        "LOW": 0,
+        "NORMAL": 3
+      }
+    },
+    "recommendations": [
+      "Deploy in production with real BERT transformer model",
+      "Implement incremental learning pipeline",
+      "Set up real-time monitoring dashboard",
+      "Configure automated threat response actions",
+      "Establish baseline performance metrics"
+    ]
+  }
+}
