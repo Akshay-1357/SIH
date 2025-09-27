@@ -64,7 +64,7 @@ This project implements a production-ready Web Application Firewall that uses ma
                        │   Admin APIs     │
                        └──────────────────┘
 ```
-##UML Sequence Diagram
+## UML Sequence Diagram
 
 
 <img width="3167" height="3840" alt="Untitled diagram _ Mermaid Chart-2025-09-27-024334" src="https://github.com/user-attachments/assets/349c2dde-432a-4aa5-b694-b65192947504" />
